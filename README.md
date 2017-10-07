@@ -4,7 +4,7 @@ This lab shows how to create a basic Cloud Function that saves a name into a Clo
 
 ## Getting Started
 
-Download and follow the lab found in [cloud-functions-intro.pdf](cloud-functions-intro.pdf).
+Download and follow the lab found in [cloud-function-intro.pdf](cloud-function-intro.pdf).
 
 ## Code Snippets
 
