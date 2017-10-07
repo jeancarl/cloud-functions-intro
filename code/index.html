@@ -1,0 +1,52 @@
+<!--
+****************************************************************************
+* Copyright 2017 IBM
+*
+*   Cloud Function Intro Application
+*
+*   By JeanCarl Bisson (@dothewww)
+*   More info: https://ibm.biz/cloud-function-intro
+*
+*   Licensed under the Apache License, Version 2.0 (the "License");
+*   you may not use this file except in compliance with the License.
+*   You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+*   Unless required by applicable law or agreed to in writing, software
+*   distributed under the License is distributed on an "AS IS" BASIS,
+*   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+*   See the License for the specific language governing permissions and
+****************************************************************************
+-->
+<html>
+  <head>
+    <title>Event Check-in</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+      $(function() {
+        $("#submit").on("click", function() {
+          $("#status").text("Making request...");
+          $.ajax({
+            type: "POST",
+            url: "https://openwhisk.ng.bluemix.net/api/v1/web/---_---/default/hello.json",
+            data: {
+              name: $("#name").val()
+            },
+            success: function(data) {
+              $("#status").text(data.message);
+              $("#response").val(JSON.stringify(data, null, 2));
+            }
+          });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    Name: <input type="text" id="name" placeholder="Name" /><br />
+    <input type="button" id="submit" value="Check-in" /><br /><br />
+
+    Status: <span id="status"></span><br />
+    <textarea id="response" style="width:500px;height:200px"></textarea>
+  </body>
+</html>
